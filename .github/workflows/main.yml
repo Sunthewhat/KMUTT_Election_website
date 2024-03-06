@@ -64,7 +64,7 @@ jobs:
           bun-version: ${{ matrix.bun-version }}
       - name: Install dependencies
         run: yarn
-        working-directory: ./public
+        working-directory: ./backend
       - name: Run lint
         run: bun run lint
         working-directory: ./backend
