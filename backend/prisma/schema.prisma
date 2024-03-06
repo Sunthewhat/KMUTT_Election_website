@@ -12,3 +12,175 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+//=============
+
+model Eligible {
+  id            Int       @id @default(autoincrement())
+  student_id    String
+  prefix        String
+  firstname     String
+  lastname      String
+  firstname_eng String
+  lastname_eng  String
+  year          Int
+  semester      Int
+  registered    Boolean
+  faculty       Faculty   @relation(fields: [faculty_id], references: [id])
+  faculty_id    Int
+  VoteLog       VoteLog[]
+}
+
+model Faculty {
+  id        Int         @id @default(autoincrement())
+  name      String
+  name_eng  String
+  eligibles Eligible[]
+  Candidate Candidate[]
+}
+
+model Major {
+  id        Int         @id @default(autoincrement())
+  name      String
+  name_eng  String
+  Candidate Candidate[]
+}
+
+model Department {
+  id        Int         @id @default(autoincrement())
+  name      String
+  name_eng  String
+  Candidate Candidate[]
+}
+
+model Election {
+  id            Int             @id @default(autoincrement())
+  name          String
+  description   String
+  created_at    DateTime        @default(now())
+  start_date    DateTime        @db.Timetz(6)
+  end_date      DateTime
+  year          Int
+  type          ElectionType
+  count_vote    Boolean
+  Party         Party[]
+  Candidate     Candidate[]
+  VoteParty     VoteParty[]
+  VoteCandidate VoteCandidate[]
+  VoteLog       VoteLog[]
+}
+
+enum ElectionType {
+  SAPA
+  ONGKARN
+  SAMO
+}
+
+model Party {
+  id             Int           @id @default(autoincrement())
+  application_no String        @unique
+  name           String
+  abbreviate     String
+  amount         Int
+  symbol         String
+  group_image    String
+  is_verified    Boolean
+  election_id    Int
+  election       Election      @relation(fields: [election_id], references: [id])
+  PartyMember    PartyMember[]
+
+  VoteParty VoteParty?
+}
+
+model PartyMember {
+  id           Int       @id @default(autoincrement())
+  no           Int
+  position     String
+  party        Party     @relation(fields: [party_id], references: [id])
+  party_id     Int
+  candidate    Candidate @relation(fields: [candidate_id], references: [id])
+  candidate_id Int       @unique
+}
+
+model Candidate {
+  id                   Int          @id @default(autoincrement())
+  student_id           String
+  prefix               Prefix
+  firstname            String
+  lastname             String
+  nickname             String
+  dob                  DateTime
+  disciplinary_history Boolean
+  year                 Int
+  major                Major        @relation(fields: [major_id], references: [id])
+  department           Department   @relation(fields: [department_id], references: [id])
+  faculty              Faculty      @relation(fields: [faculty_id], references: [id])
+  major_id             Int
+  department_id        Int
+  faculty_id           Int
+  gpax                 Float
+  contact_id           Int          @unique
+  contact              Contact      @relation(fields: [contact_id], references: [id])
+  candidate_eng        CandidateEng @relation(fields: [candidate_eng_id], references: [id])
+  candidate_eng_id     Int          @unique
+  election             Election     @relation(fields: [election_id], references: [id])
+  election_id          Int
+
+  PartyMember   PartyMember?
+  VoteCandidate VoteCandidate[]
+}
+
+model CandidateEng {
+  id        Int        @id @default(autoincrement())
+  firstname String
+  lastname  String
+  nickname  String
+  Candidate Candidate?
+}
+
+model Contact {
+  id             Int        @id @default(autoincrement())
+  phone_no       String
+  personal_enail String
+  kmutt_email    String
+  line_id        String
+  facebook       String?
+  ig             String?
+  address        String
+  Candidate      Candidate?
+}
+
+enum Prefix {
+  Mr
+  Ms
+  Mrs
+}
+
+model VoteParty {
+  election    Election @relation(fields: [election_id], references: [id])
+  election_id Int
+  party       Party    @relation(fields: [party_id], references: [id])
+  party_id    Int      @unique
+  score       Int
+
+  @@id([election_id, party_id])
+}
+
+model VoteCandidate {
+  election     Election  @relation(fields: [election_id], references: [id])
+  election_id  Int
+  candidate    Candidate @relation(fields: [candidate_id], references: [id])
+  candidate_id Int
+  score        Int
+
+  @@id([election_id, candidate_id])
+}
+
+model VoteLog {
+  election    Election @relation(fields: [election_id], references: [id])
+  election_id Int
+  eligible    Eligible @relation(fields: [eligible_id], references: [id])
+  eligible_id Int
+
+  @@id([election_id, eligible_id])
+}
