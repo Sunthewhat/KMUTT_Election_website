@@ -4,33 +4,67 @@ on:
   push:
     branches:
       - main
+
 name: stfu
 jobs:
   checking-admin:
     name: checking-admin
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        bun-version:
+          - latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - run: cd ./admin
-      - run: bun run lint
-      - run: bun run build
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ matrix.bun-version }}
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./admin
+      - name: Run lint
+        run: yarn lint
+        working-directory: ./admin
+      - name: Run build
+        run: bun run build
+        working-directory: ./admin
 
   checking-public:
     name: checking-public
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - run: cd ./public
-      - run: bun run lint
-      - run: bun run build
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ matrix.bun-version }}
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./public
+      - name: Run lint
+        run: yarn lint
+        working-directory: ./public
+      - name: Run build
+        run: bun run build
+        working-directory: ./public
 
   checking-backend:
     name: checking-backend
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - run: cd ./backend
-      - run: bun run lint
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ matrix.bun-version }}
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./backend
+      - name: Run lint
+        run: bun run lint
+        working-directory: ./backend
