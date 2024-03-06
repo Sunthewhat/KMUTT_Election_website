@@ -8,7 +8,8 @@
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
     "eslint-plugin-react": "latest",
-    "hono": "^4.0.8"
+    "hono": "^4.0.8",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@types/bun": "latest"
