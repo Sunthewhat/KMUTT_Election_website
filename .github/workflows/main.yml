@@ -22,6 +22,9 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: ${{ matrix.bun-version }}
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./admin
       - name: Run lint
         run: yarn lint
         working-directory: ./admin
@@ -39,6 +42,9 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: ${{ matrix.bun-version }}
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./public
       - name: Run lint
         run: yarn lint
         working-directory: ./public
@@ -56,6 +62,9 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: ${{ matrix.bun-version }}
-      - name: Run build
-        run: bun run build
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./public
+      - name: Run lint
+        run: bun run lint
         working-directory: ./backend
