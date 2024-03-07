@@ -1,9 +1,9 @@
+name: Pull Request Lint and Build Check
 on:
-  push:
+  pull_request:
     branches:
       - main
 
-name: stfu
 jobs:
   checking-admin:
     name: checking-admin
@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies
         run: yarn
         working-directory: ./admin
+      - name: Run lint
+        run: yarn lint
+        working-directory: ./admin
       - name: Run build
         run: bun run build
         working-directory: ./admin
@@ -40,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: yarn
         working-directory: ./public
+      - name: Run lint
+        run: yarn lint
+        working-directory: ./public
       - name: Run build
         run: bun run build
         working-directory: ./public
@@ -56,4 +62,7 @@ jobs:
           bun-version: ${{ matrix.bun-version }}
       - name: Install dependencies
         run: yarn
+        working-directory: ./backend
+      - name: Run lint
+        run: bun run lint
         working-directory: ./backend

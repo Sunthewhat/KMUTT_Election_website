@@ -57,7 +57,7 @@ const TestPage = () => {
       <Title title="ข้อมูลผู้สมัคร" subtitle="สมาชิกสภานักศึกษา" />
       <Row gutter={[16, 16]} justify="center">
         {MockData.map((data) => (
-          <Col xs={24} xl={8}>
+          <Col xs={24} xl={8} key={data.studentId}>
             {/* <Flex justify="space-around"> */}
               <CouncilCard key={data.studentId} {...data} />
             {/* </Flex> */}
