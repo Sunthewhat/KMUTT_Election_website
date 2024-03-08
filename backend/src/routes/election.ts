@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 electionRoute.get("/geteligible", async (c) => {
   const eligibleList = await prisma.eligible.findMany({
     select: {
-      id: true,
+    //   id: true,
       firstname: true,
     },
   });
