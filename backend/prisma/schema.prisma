@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,8 +6,6 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-//=============
 
 model Eligible {
   id            Int       @id @default(autoincrement())
@@ -25,32 +17,16 @@ model Eligible {
   lastname_eng  String
   year          Int
   semester      Int
-  registered    Boolean
-  faculty       Faculty   @relation(fields: [faculty_id], references: [id])
-  faculty_id    Int
+  registered    String
+  faculty       String
+  prefix_eng    String
   VoteLog       VoteLog[]
 }
 
 model Faculty {
-  id        Int         @id @default(autoincrement())
-  name      String
-  name_eng  String
-  eligibles Eligible[]
-  Candidate Candidate[]
-}
-
-model Major {
-  id        Int         @id @default(autoincrement())
-  name      String
-  name_eng  String
-  Candidate Candidate[]
-}
-
-model Department {
-  id        Int         @id @default(autoincrement())
-  name      String
-  name_eng  String
-  Candidate Candidate[]
+  id       Int    @id @default(autoincrement())
+  name     String
+  name_eng String
 }
 
 model Election {
@@ -63,17 +39,12 @@ model Election {
   year          Int
   type          ElectionType
   count_vote    Boolean
-  Party         Party[]
   Candidate     Candidate[]
-  VoteParty     VoteParty[]
+  Party         Party[]
+  Question      Question[]
   VoteCandidate VoteCandidate[]
   VoteLog       VoteLog[]
-}
-
-enum ElectionType {
-  SAPA
-  ONGKARN
-  SAMO
+  VoteParty     VoteParty[]
 }
 
 model Party {
@@ -86,24 +57,24 @@ model Party {
   group_image    String
   is_verified    Boolean
   election_id    Int
+  Answer         Answer[]
   election       Election      @relation(fields: [election_id], references: [id])
   PartyMember    PartyMember[]
-
-  VoteParty VoteParty?
+  VoteParty      VoteParty?
 }
 
 model PartyMember {
   id           Int       @id @default(autoincrement())
   no           Int
   position     String
-  party        Party     @relation(fields: [party_id], references: [id])
   party_id     Int
-  candidate    Candidate @relation(fields: [candidate_id], references: [id])
   candidate_id Int       @unique
+  candidate    Candidate @relation(fields: [candidate_id], references: [id])
+  party        Party     @relation(fields: [party_id], references: [id])
 }
 
 model Candidate {
-  id                   Int          @id @default(autoincrement())
+  id                   Int             @id @default(autoincrement())
   student_id           String
   prefix               Prefix
   firstname            String
@@ -112,22 +83,19 @@ model Candidate {
   dob                  DateTime
   disciplinary_history Boolean
   year                 Int
-  major                Major        @relation(fields: [major_id], references: [id])
-  department           Department   @relation(fields: [department_id], references: [id])
-  faculty              Faculty      @relation(fields: [faculty_id], references: [id])
-  major_id             Int
-  department_id        Int
-  faculty_id           Int
+  major                String
+  department           String?
   gpax                 Float
-  contact_id           Int          @unique
-  contact              Contact      @relation(fields: [contact_id], references: [id])
-  candidate_eng        CandidateEng @relation(fields: [candidate_eng_id], references: [id])
-  candidate_eng_id     Int          @unique
-  election             Election     @relation(fields: [election_id], references: [id])
+  contact_id           Int             @unique
+  candidate_eng_id     Int             @unique
   election_id          Int
-
-  PartyMember   PartyMember?
-  VoteCandidate VoteCandidate[]
+  faculty              String
+  Answer               Answer[]
+  candidate_eng        CandidateEng    @relation(fields: [candidate_eng_id], references: [id])
+  contact              Contact         @relation(fields: [contact_id], references: [id])
+  election             Election        @relation(fields: [election_id], references: [id])
+  PartyMember          PartyMember?
+  VoteCandidate        VoteCandidate[]
 }
 
 model CandidateEng {
@@ -150,37 +118,71 @@ model Contact {
   Candidate      Candidate?
 }
 
-enum Prefix {
-  Mr
-  Ms
-  Mrs
-}
-
 model VoteParty {
-  election    Election @relation(fields: [election_id], references: [id])
   election_id Int
-  party       Party    @relation(fields: [party_id], references: [id])
   party_id    Int      @unique
   score       Int
+  election    Election @relation(fields: [election_id], references: [id])
+  party       Party    @relation(fields: [party_id], references: [id])
 
   @@id([election_id, party_id])
 }
 
 model VoteCandidate {
-  election     Election  @relation(fields: [election_id], references: [id])
   election_id  Int
-  candidate    Candidate @relation(fields: [candidate_id], references: [id])
   candidate_id Int
   score        Int
+  candidate    Candidate @relation(fields: [candidate_id], references: [id])
+  election     Election  @relation(fields: [election_id], references: [id])
 
   @@id([election_id, candidate_id])
 }
 
 model VoteLog {
-  election    Election @relation(fields: [election_id], references: [id])
   election_id Int
-  eligible    Eligible @relation(fields: [eligible_id], references: [id])
   eligible_id Int
+  election    Election @relation(fields: [election_id], references: [id])
+  eligible    Eligible @relation(fields: [eligible_id], references: [id])
 
   @@id([election_id, eligible_id])
+}
+
+model Question {
+  id          Int          @id @default(autoincrement())
+  topic       String
+  question    String
+  description String
+  created_at  DateTime     @default(now())
+  type        QuestionType
+  election_id Int
+  Answer      Answer[]
+  election    Election     @relation(fields: [election_id], references: [id])
+}
+
+model Answer {
+  id          Int        @id @default(autoincrement())
+  answer      String
+  question_id Int
+  partyId     Int?
+  candidateId Int?
+  Candidate   Candidate? @relation(fields: [candidateId], references: [id])
+  Party       Party?     @relation(fields: [partyId], references: [id])
+  question    Question   @relation(fields: [question_id], references: [id])
+}
+
+enum ElectionType {
+  SAPA
+  ONGKARN
+  SAMO
+}
+
+enum QuestionType {
+  Party
+  Candidate
+}
+
+enum Prefix {
+  Mr
+  Ms
+  Mrs
 }

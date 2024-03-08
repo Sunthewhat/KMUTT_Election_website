@@ -11,6 +11,10 @@ app.get('/', (c) => {
 });
 
 app.route("/eligible", eligibleRoute);
+app.route("/auth", eligibleRoute);
+app.route("/eligible", eligibleRoute);
+app.route("/eligible", eligibleRoute);
+
 
 export default {
 	port: 8000,
