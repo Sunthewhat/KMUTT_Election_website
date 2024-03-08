@@ -1,7 +1,17 @@
+import { PrismaClient } from "@prisma/client";
 import { Hono } from "hono";
 
-const app = new Hono();
+const electionRoute = new Hono();
+const prisma = new PrismaClient();
 
-app.get("/", (c) => {
-    return c.text("Hello");
-})
+electionRoute.get("/geteligible", async (c) => {
+  const eligibleList = await prisma.eligible.findMany({
+    select: {
+      id: true,
+      firstname: true,
+    },
+  });
+  return c.json(eligibleList);
+});
+
+export default electionRoute;
