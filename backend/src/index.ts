@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import eligibleRoute from './routes/eligible';
+import candidateRoute from './routes/candidate'
 
 const app = new Hono();
 
@@ -12,7 +13,7 @@ app.get('/', (c) => {
 
 app.route("/eligible", eligibleRoute);
 app.route("/auth", eligibleRoute);
-app.route("/eligible", eligibleRoute);
+app.route("/candidate", candidateRoute);
 app.route("/eligible", eligibleRoute);
 
 
