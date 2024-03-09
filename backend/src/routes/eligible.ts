@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 eligibleRoute.get("/check-rights", async (c) => {
   const isEligible = await prisma.eligible.findUnique({
     where: {
-      student_id: "34130500205",
+      student_id: "55130500206",
     },
     select: {
       student_id: true,
@@ -27,23 +27,41 @@ eligibleRoute.get("/check-rights", async (c) => {
         firstname: "",
         lastname: "",
       },
-      204
+      200
     );
   }
 });
 
 eligibleRoute.post("/waive-rights", async (c) => {
   const body = await c.req.json();
-  const waiver = await prisma.waiver.create({
-    data: {
+  const student_id = "35130500205";
+  const existingWaiver = await prisma.waiver.findFirst({
+    where: {
       election_id: body.election_id,
-      student_id: "afsafaaf",
+      student_id: student_id, // Hardcoded student_id for now, you can change it if needed
     },
   });
-  if (waiver) {
-    return c.json({ success: false }, 201);
-  } else {
-    return c.json({ success: false }, 500);
+
+  if (existingWaiver) {
+    return c.json(
+      {
+        success: false,
+        message:
+          "This student already waive their right to vote for this election",
+      },
+      400
+    );
+  }
+  try {
+    await prisma.waiver.create({
+      data: {
+        election_id: body.election_id,
+        student_id: student_id,
+      },
+    });
+    return c.json({ success: true, message: "Waiving successful." }, 201);
+  } catch (e) {
+    return c.json({ success: false, message: "Waiving unsuccessful." }, 500);
   }
 });
 

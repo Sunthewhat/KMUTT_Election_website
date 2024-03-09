@@ -8,17 +8,18 @@ datasource db {
 }
 
 model Eligible {
-  student_id    String @id(map: "Eligible_pk") @unique(map: "Eligible_pk2")
-  prefix        String
-  firstname     String
-  lastname      String
-  firstname_eng String
-  lastname_eng  String
-  year          Int
-  semester      Int
-  registered    String
-  faculty       String
-  prefix_eng    String
+  student_id      String           @id(map: "Eligible_pk") @unique(map: "Eligible_pk2")
+  prefix          String
+  firstname       String
+  lastname        String
+  firstname_eng   String
+  lastname_eng    String
+  year            Int
+  semester        Int
+  registered      String
+  faculty         String
+  prefix_eng      String
+  ActivityhourLog ActivityhourLog?
 }
 
 model Faculty {
@@ -58,6 +59,7 @@ model Party {
   is_verified    Boolean
   election_id    Int
   no             Int
+  name_eng       String?
   Answer         Answer[]
   election       Election      @relation(fields: [election_id], references: [id])
   PartyMember    PartyMember[]
@@ -92,6 +94,7 @@ model Candidate {
   image_url            String
   consent              Boolean
   is_verified          Boolean
+  application_no       String
   Answer               Answer[]
   election             Election        @relation(fields: [election_id], references: [id])
   CandidateEng         CandidateEng[]
@@ -176,11 +179,12 @@ model Answer {
 }
 
 model ActivityhourLog {
-  id          Int      @id(map: "activityhourlog_pk") @default(autoincrement())
+  id          Int      @default(autoincrement())
   election_id Int
-  student_id  String
+  student_id  String   @unique(map: "activityhourlog_pk")
   date        DateTime @db.Timestamp(6)
   Election    Election @relation(fields: [election_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "activityhourlog_election_id_fk")
+  Eligible    Eligible @relation(fields: [student_id], references: [student_id], onDelete: NoAction, onUpdate: NoAction, map: "activityhourlog_eligible_student_id_fk")
 }
 
 model Waiver {
