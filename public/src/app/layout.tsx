@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Thai } from "next/font/google";
+import { Button, ConfigProvider } from "antd";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+const noto_sans = Noto_Sans_Thai({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html>
+      <body className={noto_sans.className}>{children}</body>
     </html>
   );
 }
