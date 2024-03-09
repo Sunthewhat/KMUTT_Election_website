@@ -32,4 +32,19 @@ eligibleRoute.get("/check-rights", async (c) => {
   }
 });
 
+eligibleRoute.post("/waive-rights", async (c) => {
+  const body = await c.req.json();
+  const waiver = await prisma.waiver.create({
+    data: {
+      election_id: body.election_id,
+      student_id: "afsafaaf",
+    },
+  });
+  if (waiver) {
+    return c.json({ success: false }, 201);
+  } else {
+    return c.json({ success: false }, 500);
+  }
+});
+
 export default eligibleRoute;

@@ -4,13 +4,23 @@ import { Hono } from "hono";
 const partyRoute = new Hono();
 const prisma = new PrismaClient();
 
-partyRoute.get("/login", async (c) => {
-    const eligibleList = await prisma.eligible.findMany({select: {
-        // id: true,
-        firstname: true
-    }})
-    return c.json(eligibleList)
+partyRoute.get("/all", async (c) => {
+  const body = await c.req.json();
 
+  const partyList = await prisma.party.findMany({
+    where: {
+      election_id: body.election_id,
+    },
+    select: {
+      no: true,
+      name: true,
+      abbreviate: true,
+      amount: true,
+      symbol: true,
+      group_image: true,
+    },
+  });
+  return c.json(partyList);
 });
 
 export default partyRoute;

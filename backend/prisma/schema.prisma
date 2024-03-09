@@ -57,6 +57,7 @@ model Party {
   group_image    String
   is_verified    Boolean
   election_id    Int
+  no             Int
   Answer         Answer[]
   election       Election      @relation(fields: [election_id], references: [id])
   PartyMember    PartyMember[]
@@ -86,34 +87,34 @@ model Candidate {
   major                String
   department           String?
   gpax                 Float
-  contact_id           Int             @unique
-  candidate_eng_id     Int             @unique
   election_id          Int
   faculty              String
   image_url            String
   consent              Boolean
   is_verified          Boolean
   Answer               Answer[]
-  candidate_eng        CandidateEng    @relation(fields: [candidate_eng_id], references: [id])
-  contact              Contact         @relation(fields: [contact_id], references: [id])
   election             Election        @relation(fields: [election_id], references: [id])
+  CandidateEng         CandidateEng[]
+  Contact              Contact[]
   PartyMember          PartyMember?
   VoteCandidate        VoteCandidate[]
 }
 
 model CandidateEng {
-  id         Int        @id @default(autoincrement())
-  firstname  String
-  lastname   String
-  nickname   String
-  major      String
-  department String?
-  faculty    String
-  Candidate  Candidate?
+  id           Int       @id @default(autoincrement())
+  firstname    String
+  lastname     String
+  nickname     String
+  major        String
+  department   String?
+  faculty      String
+  prefix       Prefix
+  candidate_id Int
+  Candidate    Candidate @relation(fields: [candidate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "candidateeng_candidate_id_fk")
 }
 
 model Contact {
-  id             Int        @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   phone_no       String
   personal_enail String
   kmutt_email    String
@@ -121,7 +122,8 @@ model Contact {
   facebook       String?
   ig             String?
   address        String
-  Candidate      Candidate?
+  candidate_id   Int
+  Candidate      Candidate @relation(fields: [candidate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "contact_candidate_id_fk")
 }
 
 model VoteParty {
