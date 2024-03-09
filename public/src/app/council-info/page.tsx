@@ -59,6 +59,7 @@ const TestPage = () => {
         {MockData.map((data) => (
           <Col key={data.studentId} xs={24} xl={8}>
               <CouncilCard  {...data} />
+
           </Col>
         ))}
       </Row>
