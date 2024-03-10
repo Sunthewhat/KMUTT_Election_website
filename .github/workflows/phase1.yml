@@ -9,7 +9,7 @@ on:
 
 jobs:
     checking-admin-p1:
-        name: checking-admin
+        name: checking-admin-p1
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -34,7 +34,7 @@ jobs:
               working-directory: ./admin
 
     checking-public-p1:
-        name: checking-public
+        name: checking-public-p1
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -54,7 +54,7 @@ jobs:
               working-directory: ./public
 
     checking-backend-p1:
-        name: checking-backend
+        name: checking-backend-p1
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
