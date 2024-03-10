@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 authRoute.get("/login", async (c) => {
    
     const eligibleList = await prisma.eligible.findMany({select: {
-        id: true,
+        // id: true,
         firstname: true
     }})
     return c.json(eligibleList)
