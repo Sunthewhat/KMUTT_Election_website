@@ -5,9 +5,10 @@ const eligibleRoute = new Hono();
 const prisma = new PrismaClient();
 
 eligibleRoute.get("/check-rights", async (c) => {
+  const student_id = "65130500205";
   const isEligible = await prisma.eligible.findUnique({
     where: {
-      student_id: "55130500206",
+      student_id: student_id,
     },
     select: {
       student_id: true,
@@ -26,6 +27,35 @@ eligibleRoute.get("/check-rights", async (c) => {
         prefix: "",
         firstname: "",
         lastname: "",
+      },
+      200
+    );
+  }
+});
+
+eligibleRoute.get("/check-rights-eng", async (c) => {
+  const student_id = "65130500205";
+  const isEligible = await prisma.eligible.findUnique({
+    where: {
+      student_id: student_id,
+    },
+    select: {
+      student_id: true,
+      prefix_eng: true,
+      firstname_eng: true,
+      lastname_eng: true,
+    },
+  });
+  if (isEligible) {
+    return c.json({ isEligible: true, ...isEligible }, 200);
+  } else {
+    return c.json(
+      {
+        isEligible: false,
+        student_id: "",
+        prefix_eng: "",
+        firstname_eng: "",
+        lastname_eng: "",
       },
       200
     );
