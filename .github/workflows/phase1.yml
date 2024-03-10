@@ -1,0 +1,71 @@
+name: Phase-1
+on:
+    pull_request:
+        branches:
+            - phase-1
+    push:
+        branches:
+            - phase-1
+
+jobs:
+    checking-admin-p1:
+        name: checking-admin-p1
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                bun-version:
+                    - latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Setup bun
+              uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: ${{ matrix.bun-version }}
+            - name: Install dependencies
+              run: yarn
+              working-directory: ./admin
+            - name: Run lint
+              run: yarn lint
+              working-directory: ./admin
+            - name: Run build
+              run: bun run build
+              working-directory: ./admin
+
+    checking-public-p1:
+        name: checking-public-p1
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Setup bun
+              uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: ${{ matrix.bun-version }}
+            - name: Install dependencies
+              run: yarn
+              working-directory: ./public
+            - name: Run lint
+              run: yarn lint
+              working-directory: ./public
+            - name: Run build
+              run: bun run build
+              working-directory: ./public
+
+    checking-backend-p1:
+        name: checking-backend-p1
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Setup bun
+              uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: ${{ matrix.bun-version }}
+            - name: Install dependencies
+              run: yarn
+              working-directory: ./backend
+            - name: Run lint
+              run: bun run lint
+              working-directory: ./backend
