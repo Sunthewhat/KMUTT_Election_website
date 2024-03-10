@@ -1,7 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
+/*
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -14,20 +12,86 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
+h1{
+  font-size: 45px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+h2{
+  font-size: 34px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: 'semibold';
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+h3{
+  font-size: 28px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: 'semibold';
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+h4{
+  font-size: 24px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: 'semibold';
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+h5{
+  font-size: 20px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: Medium;
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+h6{
+  font-size: 19px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: Medium;
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+p{
+  font-size: 16px;
+  font-family: 'Noto Sans Thai' , sans-serif;
+  font-weight: Regular;
+  margin: 0;
+  padding: 0;
+  color:black;
+
+}
+ButtonOrangge{
+  
+}
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* color: rgb(var(--foreground-rgb)); */
+  /* background-image: url('../../public/images/kmutt-background.png');
+  background-repeat: no-repeat;
+  background-size: contain; */
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    ) */
+    /* rgb(var(--background-start-rgb)); */
 }
 
-@layer utilities {
+/* @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-}
+  } */
+/* } */

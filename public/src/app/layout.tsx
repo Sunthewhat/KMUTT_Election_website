@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import bg from "../../public/images/kmutt-background.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {/* <div
+          style={{
+            position: "absolute",
+            top: "-10%",
+            left: "0%",
+            backgroundImage: `url(${bg.src})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            width: "100%",
+            height: "450px",
+          }}
+        ></div>
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: "0%",
+            backgroundImage: `url(${bg.src})`,
+            backgroundRepeat: "no-repeat",
+            width: "450px",
+            height: "450px",
+          }}
+        /> */}
+        {children}
+      </body>
     </html>
   );
 }
