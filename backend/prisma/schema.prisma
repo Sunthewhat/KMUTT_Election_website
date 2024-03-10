@@ -8,19 +8,18 @@ datasource db {
 }
 
 model Eligible {
-  id            Int       @id @default(autoincrement())
-  student_id    String
-  prefix        String
-  firstname     String
-  lastname      String
-  firstname_eng String
-  lastname_eng  String
-  year          Int
-  semester      Int
-  registered    String
-  faculty       String
-  prefix_eng    String
-  VoteLog       VoteLog[]
+  student_id      String           @id(map: "Eligible_pk") @unique(map: "Eligible_pk2")
+  prefix          String
+  firstname       String
+  lastname        String
+  firstname_eng   String
+  lastname_eng    String
+  year            Int
+  semester        Int
+  registered      String
+  faculty         String
+  prefix_eng      String
+  ActivityhourLog ActivityhourLog?
 }
 
 model Faculty {
@@ -30,21 +29,23 @@ model Faculty {
 }
 
 model Election {
-  id            Int             @id @default(autoincrement())
-  name          String
-  description   String
-  created_at    DateTime        @default(now())
-  start_date    DateTime        @db.Timetz(6)
-  end_date      DateTime
-  year          Int
-  type          ElectionType
-  count_vote    Boolean
-  Candidate     Candidate[]
-  Party         Party[]
-  Question      Question[]
-  VoteCandidate VoteCandidate[]
-  VoteLog       VoteLog[]
-  VoteParty     VoteParty[]
+  id              Int               @id @default(autoincrement())
+  name            String
+  description     String
+  year            Int
+  type            ElectionType
+  count_vote      Boolean
+  created_at      DateTime          @db.Timestamptz(6)
+  start_date      DateTime          @db.Timestamptz(6)
+  end_date        DateTime          @db.Timestamptz(6)
+  ActivityhourLog ActivityhourLog[]
+  Candidate       Candidate[]
+  Party           Party[]
+  Question        Question[]
+  VoteCandidate   VoteCandidate[]
+  VoteLog         VoteLog?
+  VoteParty       VoteParty[]
+  Waiver          Waiver[]
 }
 
 model Party {
@@ -57,6 +58,8 @@ model Party {
   group_image    String
   is_verified    Boolean
   election_id    Int
+  no             Int
+  name_eng       String?
   Answer         Answer[]
   election       Election      @relation(fields: [election_id], references: [id])
   PartyMember    PartyMember[]
@@ -86,28 +89,35 @@ model Candidate {
   major                String
   department           String?
   gpax                 Float
-  contact_id           Int             @unique
-  candidate_eng_id     Int             @unique
   election_id          Int
   faculty              String
+  image_url            String
+  consent              Boolean
+  is_verified          Boolean
+  application_no       String
   Answer               Answer[]
-  candidate_eng        CandidateEng    @relation(fields: [candidate_eng_id], references: [id])
-  contact              Contact         @relation(fields: [contact_id], references: [id])
   election             Election        @relation(fields: [election_id], references: [id])
+  CandidateEng         CandidateEng[]
+  Contact              Contact[]
   PartyMember          PartyMember?
   VoteCandidate        VoteCandidate[]
 }
 
 model CandidateEng {
-  id        Int        @id @default(autoincrement())
-  firstname String
-  lastname  String
-  nickname  String
-  Candidate Candidate?
+  id           Int       @id @default(autoincrement())
+  firstname    String
+  lastname     String
+  nickname     String
+  major        String
+  department   String?
+  faculty      String
+  prefix       Prefix
+  candidate_id Int
+  Candidate    Candidate @relation(fields: [candidate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "candidateeng_candidate_id_fk")
 }
 
 model Contact {
-  id             Int        @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   phone_no       String
   personal_enail String
   kmutt_email    String
@@ -115,7 +125,8 @@ model Contact {
   facebook       String?
   ig             String?
   address        String
-  Candidate      Candidate?
+  candidate_id   Int
+  Candidate      Candidate @relation(fields: [candidate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "contact_candidate_id_fk")
 }
 
 model VoteParty {
@@ -139,12 +150,9 @@ model VoteCandidate {
 }
 
 model VoteLog {
-  election_id Int
-  eligible_id Int
-  election    Election @relation(fields: [election_id], references: [id])
-  eligible    Eligible @relation(fields: [eligible_id], references: [id])
-
-  @@id([election_id, eligible_id])
+  election_id Int      @id
+  student_id  String
+  election    Election @relation(fields: [election_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "votelog_election_id_fk")
 }
 
 model Question {
@@ -152,9 +160,9 @@ model Question {
   topic       String
   question    String
   description String
-  created_at  DateTime     @default(now())
   type        QuestionType
   election_id Int
+  created_at  DateTime     @db.Timestamptz(6)
   Answer      Answer[]
   election    Election     @relation(fields: [election_id], references: [id])
 }
@@ -168,6 +176,22 @@ model Answer {
   Candidate   Candidate? @relation(fields: [candidateId], references: [id])
   Party       Party?     @relation(fields: [partyId], references: [id])
   question    Question   @relation(fields: [question_id], references: [id])
+}
+
+model ActivityhourLog {
+  id          Int      @default(autoincrement())
+  election_id Int
+  student_id  String   @unique(map: "activityhourlog_pk")
+  date        DateTime @db.Timestamp(6)
+  Election    Election @relation(fields: [election_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "activityhourlog_election_id_fk")
+  Eligible    Eligible @relation(fields: [student_id], references: [student_id], onDelete: NoAction, onUpdate: NoAction, map: "activityhourlog_eligible_student_id_fk")
+}
+
+model Waiver {
+  id          Int      @id(map: "waiver_pk") @default(autoincrement())
+  election_id Int
+  student_id  String?
+  Election    Election @relation(fields: [election_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "waiver_election_id_fk")
 }
 
 enum ElectionType {
