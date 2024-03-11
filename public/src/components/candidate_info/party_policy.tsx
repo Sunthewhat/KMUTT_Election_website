@@ -14,9 +14,9 @@ export const PartyPolicy = ({
 			{question?.map((q, i) => (
 				<Col xs={24} xl={8} key={i}>
 					<Flex style={{flexDirection: "column", marginTop: "10px"}}>
-						<p>{q}</p>
+						<p style={{color:'#3B3B3B'}}>{q}</p>
 						{answer?.[i].map((a, j) => (
-							<p key={j}>{a}</p>
+							<p key={j} style={{color:'#585858'}}>{a}</p>
 						))}
 					</Flex>
 				</Col>

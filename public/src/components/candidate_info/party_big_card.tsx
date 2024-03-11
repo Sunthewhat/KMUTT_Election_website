@@ -2,7 +2,7 @@ import { Card, Flex, Image } from "antd";
 import { PartyPolicy } from "./party_policy";
 
 interface PartyBigCardProps {
-  application_no: number;
+  partyNo: number;
   name: string;
   leader: string;
   leader_image: string;
@@ -11,7 +11,7 @@ interface PartyBigCardProps {
 }
 
 export const PartyBigCard = ({
-  application_no,
+  partyNo,
   name,
   leader,
   leader_image,
@@ -23,13 +23,13 @@ export const PartyBigCard = ({
       <Flex justify="space-between">
         <Flex style={{flexDirection: "column"}}>
           <Flex>
-            <h4 style={{marginRight: "3px"}}>เบอร์</h4>
-            <h3>{application_no}</h3>
+            <h4 style={{marginRight: "3px", color:'#3B3B3B'}}>เบอร์</h4>
+            <h3 style={{color:'#3B3B3B'}}>{partyNo}</h3>
           </Flex>
           <h3>{name}</h3>
           <Flex style={{flexDirection: "column", borderLeftStyle: "solid", borderLeftWidth: "4px", borderLeftColor: "#D9D9D9", paddingLeft: "10px"}}>
-            <p>หัวหน้าพรรค</p>
-            <p>{leader}</p>
+            <p style={{color:'#3B3B3B'}}>หัวหน้าพรรค</p>
+            <p style={{color:'#585858'}}>{leader}</p>
           </Flex>
         </Flex>
         <Flex>

@@ -5,34 +5,40 @@ import { Flex, Row, Col, Grid } from "antd";
 
 const MockData = [
   {
-    partyName: "พลังประชารัฐ",
+    partyName: "ก้าวไกล",
     partyNo: "1",
+	partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png"
   },
   {
-    partyName: "พลังประชารัฐ",
+    partyName: "ก้าวไกล",
     partyNo: "2",
+	partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png"
   },
   {
-    partyName: "พลังประชารัฐ",
+    partyName: "ก้าวไกล",
     partyNo: "3",
+	partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png"
   },
   {
-    partyName: "พลังประชารัฐ",
+    partyName: "ก้าวไกล",
     partyNo: "4",
+	partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png"
   },
   {
-    partyName: "พลังประชารัฐ",
+    partyName: "ก้าวไกล",
     partyNo: "5",
+	partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png"
   },
   {
-    partyName: "พลังประชารัฐ",
+    partyName: "ก้าวไกล",
     partyNo: "6",
+	partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png"
   },
 ];
 
 const MockBigCard = [
   {
-    application_no: 1,
+    partyNo: 1,
     name: "พลังประชารัฐ",
     leader: "ประยุทธ์  จันทร์โอชา",
     leader_image:
@@ -46,7 +52,7 @@ const MockBigCard = [
 	  ]
   },
   {
-	application_no: 2,
+	partyNo: 2,
 	name: "พลังประชารัฐ",
 	leader: "ประยุทธ์  จันทร์โอชา",
 	leader_image:
@@ -60,7 +66,7 @@ const MockBigCard = [
 	  ]
   },
   {
-    application_no: 3,
+    partyNo: 3,
     name: "พลังประชารัฐ",
     leader: "ประยุทธ์  จันทร์โอชา",
     leader_image:
@@ -89,7 +95,7 @@ const TestPage = () => {
       </Flex>
       <Flex style={{ flexDirection: "column", marginTop: "10px" }} gap={10}>
         {MockBigCard.map((data) => (
-          <PartyBigCard key={data.application_no} {...data} />
+          <PartyBigCard key={data.partyNo} {...data} />
         ))}
       </Flex>
     </Flex>
