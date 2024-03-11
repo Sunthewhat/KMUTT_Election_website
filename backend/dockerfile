@@ -26,6 +26,6 @@ COPY --from=builder /mnt/bun.lockb .
 
 COPY --from=builder /mnt/prisma ./prisma
 
-EXPOSE 8080
+EXPOSE 8000
 
-CMD ["npm", "run", "start"]
+CMD ["bun", "dist/index.js"]
