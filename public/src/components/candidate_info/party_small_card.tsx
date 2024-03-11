@@ -27,7 +27,7 @@ export const PartySmallCard = ({
         backgroundSize: "45px auto",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        boxShadow: isSelected ? "0px 0px 5px 5px orange" : "none",
+        boxShadow: isSelected ? "0px 0px 3px 3px orange" : "none",
       }}
       onClick={onSelect}
     >

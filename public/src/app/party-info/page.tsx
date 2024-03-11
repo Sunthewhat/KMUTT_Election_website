@@ -36,59 +36,191 @@ const MockData = [
 const MockBigCard = [
   {
     partyNo: 1,
-    name: "พลังประชารัฐ",
-    leader: "ประยุทธ์  จันทร์โอชา",
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
     leader_image:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-    question: ["Question 1", "Question 2", "Question 3", "Question 4"],
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
     answer: [
-      ["Answer 11", "Answer 12", "Answer 13"],
-      ["Answer 21", "Answer 22", "Answer 23"],
-      ["Answer 31", "Answer 32", "Answer 33"],
-      ["Answer 41", "Answer 42", "Answer 43"],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
     ],
+	members: [
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "หัวหน้าพรรค"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เลขา"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "คณะกรรมการ"
+		},
+	]
   },
   {
     partyNo: 2,
-    name: "พลังประชารัฐ",
-    leader: "ประยุทธ์  จันทร์โอชา",
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
     leader_image:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-    question: ["Question 1", "Question 2", "Question 3", "Question 4"],
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
     answer: [
-      ["Answer 11", "Answer 12", "Answer 13"],
-      ["Answer 21", "Answer 22", "Answer 23"],
-      ["Answer 31", "Answer 32", "Answer 33"],
-      ["Answer 41", "Answer 42", "Answer 43"],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
     ],
+	members: [
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "หัวหน้าพรรค"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เลขา"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "คณะกรรมการ"
+		},
+	]
   },
   {
     partyNo: 3,
-    name: "พลังประชารัฐ",
-    leader: "ประยุทธ์  จันทร์โอชา",
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
     leader_image:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-    question: ["Question 1", "Question 2", "Question 3", "Question 4"],
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
     answer: [
-      ["Answer 11", "Answer 12", "Answer 13"],
-      ["Answer 21", "Answer 22", "Answer 23"],
-      ["Answer 31", "Answer 32", "Answer 33"],
-      ["Answer 41", "Answer 42", "Answer 43"],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
     ],
+	members: [
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "หัวหน้าพรรค"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เลขา"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "คณะกรรมการ"
+		},
+	]
   },
   {
     partyNo: 4,
-    name: "พลังประชารัฐ",
-    leader: "ประยุทธ์  จันทร์โอชา",
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
     leader_image:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-    question: ["Question 1", "Question 2", "Question 3", "Question 4"],
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
     answer: [
-      ["Answer 11", "Answer 12", "Answer 13"],
-      ["Answer 21", "Answer 22", "Answer 23"],
-      ["Answer 31", "Answer 32", "Answer 33"],
-      ["Answer 41", "Answer 42", "Answer 43"],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
     ],
+	members: [
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "หัวหน้าพรรค"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เลขา"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "พิธา",
+			lastname: "ลิ้มเจริญรัตน์",
+			studentId: "6010405090",
+			faculty: "วิศวกรรมศาสตร์",
+			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			position: "คณะกรรมการ"
+		},
+	]
   },
 ];
 
@@ -107,7 +239,7 @@ const TestPage = () => {
         title="ข้อมูลผู้สมัคร"
         subtitle="คณะกรรมการองค์การบริหารองค์การนักศึกษา"
       />
-      <Flex style={{ flexDirection: "row", overflow: "auto" }} gap={10}>
+      <Flex style={{ flexDirection: "row", overflow: "auto", marginBottom: "-15px" }} gap={10}>
         {MockData.map((data) => (
           <PartySmallCard
             key={data.partyNo}

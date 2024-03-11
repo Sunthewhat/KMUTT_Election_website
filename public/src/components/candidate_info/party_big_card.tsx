@@ -1,5 +1,6 @@
 import { Card, Flex, Image } from "antd";
 import { PartyPolicy } from "./party_policy";
+import { PartyMemberCard } from "./party_member";
 
 interface PartyBigCardProps {
   partyNo: number;
@@ -8,6 +9,7 @@ interface PartyBigCardProps {
   leader_image: string;
   question?: string[];
   answer?: string[][];
+  members?: string[];
 }
 
 export const PartyBigCard = ({
@@ -17,6 +19,7 @@ export const PartyBigCard = ({
   leader_image,
   question,
   answer,
+  members,
 }: PartyBigCardProps) => {
   return (
     <Card style={{ borderRadius: "0" }}>
@@ -27,7 +30,7 @@ export const PartyBigCard = ({
             <h3 style={{color:'#3B3B3B'}}>{partyNo}</h3>
           </Flex>
           <h3>{name}</h3>
-          <Flex style={{flexDirection: "column", borderLeftStyle: "solid", borderLeftWidth: "4px", borderLeftColor: "#D9D9D9", paddingLeft: "10px"}}>
+          <Flex style={{flexDirection: "column", borderLeftStyle: "solid", borderLeftWidth: "4px", borderLeftColor: "#D9D9D9", paddingLeft: "1em", marginTop: "1em"}}>
             <p style={{color:'#3B3B3B'}}>หัวหน้าพรรค</p>
             <p style={{color:'#585858'}}>{leader}</p>
           </Flex>
@@ -42,8 +45,20 @@ export const PartyBigCard = ({
           />
         </Flex>
       </Flex>
-	  <Flex style={{borderLeftStyle: "solid", borderLeftWidth: "4px", borderLeftColor: "#D9D9D9", paddingLeft: "10px"}}>
+	  <Flex style={{flexDirection: "column"}}>
 		<PartyPolicy question={question} answer={answer} />
+		<h4 style={{marginTop: "1em"}}>สมาชิกพรรค</h4>
+		{members && members.map((member, index) => (
+		  <PartyMemberCard
+			key={index}
+			firstname={member.firstname}
+			lastname={member.lastname}
+			studentId={member.studentId}
+			faculty={member.faculty}
+			imageUrl={member.imageUrl}
+			position={member.position}
+		  />
+		))}
 	  </Flex>
     </Card>
   );
