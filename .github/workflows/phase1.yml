@@ -3,9 +3,6 @@ on:
     pull_request:
         branches:
             - phase-1
-    push:
-        branches:
-            - phase-1
 
 jobs:
     checking-admin-p1:
