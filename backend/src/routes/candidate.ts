@@ -208,9 +208,66 @@ candidateRoute.get("/CandidateEN/:id", async (c) => {
     }))
 
     return c.json({
-        candidateENG,
+        "candidate": candidateENG,
         "policy": qa
     })
 })
+
+candidateRoute.post("/CheckVoteType", async (c) => {
+    try {
+        // ! not sure if this is the correct way to get the body
+        const body = await c.req.json();
+        const election_id = parseInt(body.election_id);
+
+        const candidateList = await prisma.candidate.findMany({
+            where: {
+                election_id: election_id
+            },
+            select: {
+                id: true,
+                application_no: true,
+                firstname: true,
+                faculty: true // Selecting the faculty column
+            }
+        });
+
+        const facultyCount: Record<string, number> = {};
+
+        candidateList.forEach((candidate) => {
+            const facultyName = candidate.faculty;
+            facultyCount[facultyName] = (facultyCount[facultyName] || 0) + 1;
+        });
+
+        const vote_type = await Promise.all(
+            candidateList.map(async (candidate) => {
+                const facultyName = candidate.faculty;
+                var type = "";
+
+                if (facultyCount[facultyName] === 1) {
+                    await prisma.candidate.update({
+                        where: { id: candidate.id },
+                        data: { vote_type: "Approve" }
+                    });
+                    type = "Approve";
+                } else {
+                    await prisma.candidate.update({
+                        where: { id: candidate.id },
+                        data: { vote_type: "Vote" }
+                    });
+                    type = "Vote";
+                }
+
+                return {
+                    ...candidate,
+                    "vote_type": type
+                }
+            })
+        );
+
+        return c.json(vote_type);
+    } catch (error) {
+        return c.json("Error occurred", 404);
+    }
+});
 
 export default candidateRoute;
