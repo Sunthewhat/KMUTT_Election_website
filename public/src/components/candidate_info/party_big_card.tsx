@@ -9,7 +9,14 @@ interface PartyBigCardProps {
   leader_image: string;
   question?: string[];
   answer?: string[][];
-  members?: string[];
+  members: {
+    firstname: string;
+    lastname: string;
+    studentId: string;
+    faculty: string;
+    imageUrl: string;
+    position: string;
+  }[];
 }
 
 export const PartyBigCard = ({
@@ -50,7 +57,7 @@ export const PartyBigCard = ({
 		<h4 style={{marginTop: "1em"}}>สมาชิกพรรค</h4>
 		{members && members.map((member, index) => (
 		  <PartyMemberCard
-			key={index}
+			key={member.studentId}
 			firstname={member.firstname}
 			lastname={member.lastname}
 			studentId={member.studentId}

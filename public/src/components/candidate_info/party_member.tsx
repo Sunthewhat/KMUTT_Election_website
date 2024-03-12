@@ -1,6 +1,4 @@
 import { Card, Flex, Image } from "antd";
-import { useState } from "react";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
 
 interface CouncilCardProps {
   firstname?: string;
@@ -39,11 +37,11 @@ export const PartyMemberCard = ({
               justifyContent: "center",
             }}
           >
-            <h4>{firstname}</h4>
-            <h4>{lastname}</h4>
-            <p>{studentId}</p>
-            <p>{faculty}</p>
-            <p>{position}</p>
+            <h4 style={{color:'#3B3B3B'}}>{firstname}</h4>
+            <h4 style={{color:'#3B3B3B'}}>{lastname}</h4>
+            <p style={{color:'#585858'}}>{studentId}</p>
+            <p style={{color:'#585858'}}>{faculty}</p>
+            <p style={{color:'#585858'}}>{position}</p>
           </Flex>
         </Flex>
       </Flex>

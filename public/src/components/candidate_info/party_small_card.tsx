@@ -1,5 +1,4 @@
 import { Card, Flex } from "antd";
-import React, { useState } from "react";
 
 interface PartySmallCardProps {
   partyName?: string;

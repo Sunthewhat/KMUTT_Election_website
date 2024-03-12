@@ -1,4 +1,4 @@
-import { Card, Flex, Row, Col } from "antd";
+import { Flex, Row, Col } from "antd";
 
 interface PartyPolicyProps {
   question?: string[];
@@ -23,7 +23,7 @@ export const PartyPolicy = ({ question, answer }: PartyPolicyProps) => {
             <p style={{ color: "#3B3B3B" }}>{q}</p>
             {answer?.[i].map((a, j) => (
               <p key={j} style={{ color: "#585858" }}>
-                {a}
+                {`${j + 1}. ${a}`}
               </p>
             ))}
           </Flex>

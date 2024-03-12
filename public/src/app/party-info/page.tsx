@@ -3,7 +3,7 @@
 import { PartyBigCard } from "@/components/candidate_info/party_big_card";
 import { PartySmallCard } from "@/components/candidate_info/party_small_card";
 import { Title } from "@/components/title";
-import { Flex, Row, Col, Grid } from "antd";
+import { Flex, } from "antd";
 import React, { useState } from "react";
 
 const MockData = [
@@ -48,35 +48,27 @@ const MockBigCard = [
     ],
 	members: [
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
-			position: "หัวหน้าพรรค"
-		},
-		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เลขา"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เหรัญญิก"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "คณะกรรมการ"
 		},
 	]
@@ -95,35 +87,27 @@ const MockBigCard = [
     ],
 	members: [
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
-			position: "หัวหน้าพรรค"
-		},
-		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เลขา"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เหรัญญิก"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "คณะกรรมการ"
 		},
 	]
@@ -142,35 +126,27 @@ const MockBigCard = [
     ],
 	members: [
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
-			position: "หัวหน้าพรรค"
-		},
-		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เลขา"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เหรัญญิก"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "คณะกรรมการ"
 		},
 	]
@@ -189,35 +165,27 @@ const MockBigCard = [
     ],
 	members: [
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
-			position: "หัวหน้าพรรค"
-		},
-		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เลขา"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "เหรัญญิก"
 		},
 		{
-			firstname: "พิธา",
-			lastname: "ลิ้มเจริญรัตน์",
-			studentId: "6010405090",
-			faculty: "วิศวกรรมศาสตร์",
-			imageUrl: "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
 			position: "คณะกรรมการ"
 		},
 	]
@@ -254,7 +222,6 @@ const TestPage = () => {
       <Flex style={{ flexDirection: "column", marginTop: "10px" }} gap={10}>
         {selectedParty !== null && (
           <PartyBigCard
-            key={selectedParty}
             {...MockBigCard[selectedParty - 1]}
           />
         )}
