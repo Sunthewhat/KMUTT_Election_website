@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "tsc --project .",
     "prisma": "npx prisma db pull && npx prisma generate"
   },
   "dependencies": {
@@ -11,6 +12,7 @@
     "eslint": "latest",
     "eslint-plugin-react": "latest",
     "hono": "^4.0.8",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
