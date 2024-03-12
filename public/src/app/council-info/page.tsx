@@ -1,65 +1,70 @@
+'use client'
+
 import { CouncilCard } from "@/components/candidate_info/council_card";
 import { Title } from "@/components/title";
-import { Button, Flex, Layout, Row, Col, Grid } from "antd";
-const { useBreakpoint } = Grid;
+import { Flex, Row, Col,} from "antd";
 
 const MockData = [
   {
-    name: "John Doe",
-    studentId: "123456",
-    faculty: "Faculty of Engineering",
-    imageUrl:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
+    firstname: "จอห์น",
+    lastname: "นอมเมนเซ่น ดูชัค",
+    studentId: "660123456786",
+    faculty: "คณะวิศวะกรรมศาสตร์",
+    imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+	nickname: "จอห์น",
+	motto: "เราจะทำให้สภานักศึกษาเป็นองค์กรที่มีคุณภาพ",
+	goal: "เพื่อสร้างสภานักศึกษาที่มีคุณภาพและเป็นที่ยอมรับของสังคม",
   },
   {
-    name: "John Doe",
-    studentId: "123456",
-    faculty: "Faculty of Engineering",
-    imageUrl:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
+    firstname: "จอห์น",
+    lastname: "นอมเมนเซ่น ดูชัค",
+    studentId: "660123456786",
+    faculty: "คณะวิศวะกรรมศาสตร์",
+    imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+	nickname: "จอห์น",
+	motto: "เราจะทำให้สภานักศึกษาเป็นองค์กรที่มีคุณภาพ",
+	goal: "เพื่อสร้างสภานักศึกษาที่มีคุณภาพและเป็นที่ยอมรับของสังคม",
   },
   {
-    name: "John Doe",
-    studentId: "123456",
-    faculty: "Faculty of Engineering",
-    imageUrl:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
+    firstname: "จอห์น",
+    lastname: "นอมเมนเซ่น ดูชัค",
+    studentId: "660123456786",
+    faculty: "คณะวิศวะกรรมศาสตร์",
+    imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+	nickname: "จอห์น",
+	motto: "เราจะทำให้สภานักศึกษาเป็นองค์กรที่มีคุณภาพ",
+	goal: "เพื่อสร้างสภานักศึกษาที่มีคุณภาพและเป็นที่ยอมรับของสังคม",
   },
   {
-    name: "John Doe",
-    studentId: "123456",
-    faculty: "Faculty of Engineering",
-    imageUrl:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
+    firstname: "จอห์น",
+    lastname: "นอมเมนเซ่น ดูชัค",
+    studentId: "660123456786",
+    faculty: "คณะวิศวะกรรมศาสตร์",
+    imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+	nickname: "จอห์น",
+	motto: "เราจะทำให้สภานักศึกษาเป็นองค์กรที่มีคุณภาพ",
+	goal: "เพื่อสร้างสภานักศึกษาที่มีคุณภาพและเป็นที่ยอมรับของสังคม",
   },
   {
-    name: "John Doe",
-    studentId: "123456",
-    faculty: "Faculty of Engineering",
-    imageUrl:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-  },
-  {
-    name: "John Doe",
-    studentId: "123456",
-    faculty: "Faculty of Engineering",
-    imageUrl:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
+    firstname: "จอห์น",
+    lastname: "นอมเมนเซ่น ดูชัค",
+    studentId: "660123456786",
+    faculty: "คณะวิศวะกรรมศาสตร์",
+    imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+	nickname: "จอห์น",
+	motto: "เราจะทำให้สภานักศึกษาเป็นองค์กรที่มีคุณภาพ",
+	goal: "เพื่อสร้างสภานักศึกษาที่มีคุณภาพและเป็นที่ยอมรับของสังคม",
   },
 ];
 
 const TestPage = () => {
-	// const {xs, sm, md, lg} = useBreakpoint();
-	// const flexDir = xs? "column" : sm? "column": md?  "row": lg? "row": "row";
   return (
-    // <Flex style={{ flexDirection: `${flexDir}`, width: "80%", margin: "0 auto" }}>
     <Flex style={{ flexDirection: "column", margin: "0 auto" }}>
       <Title title="ข้อมูลผู้สมัคร" subtitle="สมาชิกสภานักศึกษา" />
-      <Row gutter={[16, 16]} justify="center">
+      <Row gutter={[16, 16]} >
         {MockData.map((data) => (
           <Col key={data.studentId} xs={24} xl={8}>
               <CouncilCard  {...data} />
-
           </Col>
         ))}
       </Row>

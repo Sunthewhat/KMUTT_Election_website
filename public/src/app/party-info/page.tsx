@@ -1,96 +1,230 @@
+"use client";
+
 import { PartyBigCard } from "@/components/candidate_info/party_big_card";
 import { PartySmallCard } from "@/components/candidate_info/party_small_card";
 import { Title } from "@/components/title";
-import { Flex, Row, Col, Grid } from "antd";
+import { Flex, } from "antd";
+import React, { useState } from "react";
 
 const MockData = [
   {
-    partyName: "พลังประชารัฐ",
-    partyNo: "1",
+    partyName: "ก้าวไกล",
+    partyNo: 1,
+    partyLogo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png",
   },
   {
-    partyName: "พลังประชารัฐ",
-    partyNo: "2",
+    partyName: "ก้าวไกล",
+    partyNo: 2,
+    partyLogo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png",
   },
   {
-    partyName: "พลังประชารัฐ",
-    partyNo: "3",
+    partyName: "ก้าวไกล",
+    partyNo: 3,
+    partyLogo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png",
   },
   {
-    partyName: "พลังประชารัฐ",
-    partyNo: "4",
-  },
-  {
-    partyName: "พลังประชารัฐ",
-    partyNo: "5",
-  },
-  {
-    partyName: "พลังประชารัฐ",
-    partyNo: "6",
+    partyName: "ก้าวไกล",
+    partyNo: 4,
+    partyLogo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Move_Forward_Party_Logo.svg/1200px-Move_Forward_Party_Logo.svg.png",
   },
 ];
 
 const MockBigCard = [
   {
-    application_no: 1,
-    name: "พลังประชารัฐ",
-    leader: "ประยุทธ์  จันทร์โอชา",
+    partyNo: 1,
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
     leader_image:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-	  question: ["Question 1", "Question 2", "Question 3", "Question 4"],
-	  answer: [
-		  ["Answer 11", "Answer 12", "Answer 13"],
-		  ["Answer 21", "Answer 22", "Answer 23"],
-		  ["Answer 31", "Answer 32", "Answer 33"],
-		  ["Answer 41", "Answer 42", "Answer 43"],
-	  ]
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
+    answer: [
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+    ],
+	members: [
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เลขา"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "คณะกรรมการ"
+		},
+	]
   },
   {
-	application_no: 2,
-	name: "พลังประชารัฐ",
-	leader: "ประยุทธ์  จันทร์โอชา",
-	leader_image:
-	  "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-	  question: ["Question 1", "Question 2", "Question 3", "Question 4"],
-	  answer: [
-		  ["Answer 11", "Answer 12", "Answer 13"],
-		  ["Answer 21", "Answer 22", "Answer 23"],
-		  ["Answer 31", "Answer 32", "Answer 33"],
-		  ["Answer 41", "Answer 42", "Answer 43"],
-	  ]
+    partyNo: 2,
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
+    leader_image:
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
+    answer: [
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+    ],
+	members: [
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เลขา"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "คณะกรรมการ"
+		},
+	]
   },
   {
-    application_no: 3,
-    name: "พลังประชารัฐ",
-    leader: "ประยุทธ์  จันทร์โอชา",
+    partyNo: 3,
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
     leader_image:
-      "https://pbs.twimg.com/profile_images/1201483636454744065/SOwgoBYn_400x400.jpg",
-	question: ["Question 1", "Question 2", "Question 3", "Question 4"],
-	answer: [
-		["Answer 11", "Answer 12", "Answer 13"],
-		["Answer 21", "Answer 22", "Answer 23"],
-		["Answer 31", "Answer 32", "Answer 33"],
-		["Answer 41", "Answer 42", "Answer 43"],
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
+    answer: [
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+    ],
+	members: [
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เลขา"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "คณะกรรมการ"
+		},
+	]
+  },
+  {
+    partyNo: 4,
+    name: "ก้าวไกล",
+    leader: "พิธา ลิ้มเจริญรัตน์",
+    leader_image:
+      "https://prod-mfp-imgsrv.tillitsdone.com/uploads/medium_IMG_0575_Pita_Limjaroenrat_a204bc0752.jpg",
+    question: ["นโยบาย", "วิสัยทัศน์", "โครงการที่จะทำหากเป็น"],
+    answer: [
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+      ["velit esse cillum dolore eu fugiat nulla pariatur.", "Excepteur sint occaecat.", "sunt in culpa qui officia deserunt mollit anim id est laborum."],
+    ],
+	members: [
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เลขา"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "เหรัญญิก"
+		},
+		{
+			firstname: "จอห์น",
+			lastname: "นอมเมนเซ่น ดูชัค",
+			studentId: "660123456786",
+			faculty: "คณะวิศวะกรรมศาสตร์",
+			imageUrl: "https://bigthink.com/wp-content/uploads/2013/07/Profile-Adam-Grant-02.jpg?w=512&h=512&crop=1",
+			position: "คณะกรรมการ"
+		},
 	]
   },
 ];
 
 const TestPage = () => {
+  const firstPartyNo = MockData.length > 0 ? MockData[0].partyNo : null;
+  const [selectedParty, setSelectedParty] = useState<number | null>(
+    firstPartyNo
+  );
+
+  const handleSelectParty = (partyNo: number) => {
+    setSelectedParty(partyNo);
+  };
   return (
     <Flex style={{ flexDirection: "column", margin: "0 auto" }}>
       <Title
         title="ข้อมูลผู้สมัคร"
         subtitle="คณะกรรมการองค์การบริหารองค์การนักศึกษา"
       />
-      <Flex style={{ flexDirection: "row", overflow: "auto" }} gap={10}>
+      <Flex style={{ flexDirection: "row", overflow: "auto", marginBottom: "-15px" }} gap={10}>
         {MockData.map((data) => (
-          <PartySmallCard key={data.partyNo} {...data} />
+          <PartySmallCard
+            key={data.partyNo}
+            partyName={data.partyName}
+            partyNo={data.partyNo}
+            partyLogo={data.partyLogo}
+            isSelected={selectedParty === data.partyNo}
+            onSelect={() => handleSelectParty(data.partyNo)}
+          />
         ))}
       </Flex>
       <Flex style={{ flexDirection: "column", marginTop: "10px" }} gap={10}>
-        {MockBigCard.map((data) => (
-          <PartyBigCard key={data.application_no} {...data} />
-        ))}
+        {selectedParty !== null && (
+          <PartyBigCard
+            {...MockBigCard[selectedParty - 1]}
+          />
+        )}
       </Flex>
     </Flex>
   );
