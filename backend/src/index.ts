@@ -7,7 +7,6 @@ import partyRoute from "./routes/party";
 import authRoute from "./routes/auth";
 import electionRoute from './routes/election';
 
-
 const app = new Hono();
 
 app.use(logger());
