@@ -9,6 +9,7 @@
     "@prisma/client": "^5.10.2",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
+    "arctic": "^1.2.1",
     "eslint": "latest",
     "eslint-plugin-react": "latest",
     "hono": "^4.0.8",
