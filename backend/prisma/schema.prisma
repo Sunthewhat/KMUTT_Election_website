@@ -23,9 +23,9 @@ model Eligible {
 }
 
 model Faculty {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   name     String
-  name_eng String
+  name_eng String?
 }
 
 model Election {
@@ -43,7 +43,7 @@ model Election {
   Party           Party[]
   Question        Question[]
   VoteCandidate   VoteCandidate[]
-  VoteLog         VoteLog?
+  VoteLog         VoteLog[]         @ignore
   VoteParty       VoteParty[]
   Waiver          Waiver[]
 }
@@ -95,6 +95,7 @@ model Candidate {
   consent              Boolean
   is_verified          Boolean
   application_no       String
+  vote_type            vote_type?
   Answer               Answer[]
   election             Election        @relation(fields: [election_id], references: [id])
   CandidateEng         CandidateEng[]
@@ -149,17 +150,20 @@ model VoteCandidate {
   @@id([election_id, candidate_id])
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model VoteLog {
-  election_id Int      @id
+  election_id Int
   student_id  String
   election    Election @relation(fields: [election_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "votelog_election_id_fk")
+
+  @@ignore
 }
 
 model Question {
   id          Int          @id @default(autoincrement())
   topic       String
   question    String
-  description String
+  description String?
   type        QuestionType
   election_id Int
   created_at  DateTime     @db.Timestamptz(6)
@@ -209,4 +213,9 @@ enum Prefix {
   Mr
   Ms
   Mrs
+}
+
+enum vote_type {
+  Approve
+  Vote
 }
