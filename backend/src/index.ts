@@ -1,10 +1,11 @@
-import { cors } from "hono/cors";
-import { Hono } from "hono";
-import { logger } from "hono/logger";
-import eligibleRoute from "./routes/eligible";
-import candidateRoute from "./routes/candidate";
-import partyRoute from "./routes/party";
+import { Hono } from 'hono';
+import { logger } from 'hono/logger';
+import eligibleRoute from './routes/eligible';
+import candidateRoute from './routes/candidate'
+import partyRoute from './routes/party';
+import electionRoute from './routes/election';
 import authRoute from "./routes/auth";
+
 
 const app = new Hono();
 
@@ -28,6 +29,7 @@ app.route("/auth", authRoute);
 app.route("/candidate", candidateRoute);
 app.route("/eligible", eligibleRoute);
 app.route("/party", partyRoute);
+app.route("/election", electionRoute)
 
 export default {
   port: 8000,
