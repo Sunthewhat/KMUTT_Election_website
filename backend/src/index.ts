@@ -1,10 +1,11 @@
-import { Hono } from 'hono';
-import { logger } from 'hono/logger';
-import eligibleRoute from './routes/eligible';
-import candidateRoute from './routes/candidate'
-import partyRoute from './routes/party';
-import electionRoute from './routes/election';
+import { cors } from "hono/cors";
+import { Hono } from "hono";
+import { logger } from "hono/logger";
+import eligibleRoute from "./routes/eligible";
+import candidateRoute from "./routes/candidate";
+import partyRoute from "./routes/party";
 import authRoute from "./routes/auth";
+import electionRoute from './routes/election';
 
 
 const app = new Hono();
